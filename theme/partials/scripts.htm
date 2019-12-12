@@ -1,0 +1,24 @@
+==
+function onEnd()
+{
+  $this['backendAuth'] = \BackendAuth::getUser();
+}
+==
+<script src="{{ [
+    '@jquery'
+] | theme }}"></script>
+{% framework extras %}
+
+{% scripts %}
+
+{% if this.environment == "production" and not backendAuth %}
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=XXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'XXXXXXXX',{ 'anonymize_ip': true });
+</script>
+
+{% endif %}
